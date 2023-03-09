@@ -42,7 +42,7 @@ jobs:
     outputs:
       result: ${{ steps.critical-section.outputs.result }}
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: action
       - name: run the action
@@ -61,7 +61,7 @@ jobs:
     outputs:
       result: ${{ steps.critical-section.outputs.result }}
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: action
       - name: run the action
@@ -80,7 +80,7 @@ jobs:
     outputs:
       result: ${{ steps.critical-section.outputs.result }}
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: action
       - name: run the action
