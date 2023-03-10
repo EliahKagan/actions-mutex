@@ -1,3 +1,7 @@
+This unofficial fork is experimental and not yet recommended.
+
+---
+
 # actions-mutex
 
 A GitHub Action for exclusive control.
