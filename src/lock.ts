@@ -67,7 +67,7 @@ class Locker {
     // generate files
     let data = `# Lock File for actions-mutex
 
-The \`${this.branch}\` branch contains lock file for [actions-mutex](https://github.com/shogo82148/actions-mutex).
+The \`${this.branch}\` branch contains lock file for [actions-mutex](https://github.com/EliahKagan/actions-mutex).
 DO NOT TOUCH this branch manually.
 
 - Key: ${this.key}

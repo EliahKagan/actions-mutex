@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/shogo82148/actions-mutex.git"
+    "url": "git+ssh://git@github.com/EliahKagan/actions-mutex.git"
   },
   "author": "Ichinose Shogo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shogo82148/actions-mutex/issues"
+    "url": "https://github.com/EliahKagan/actions-mutex/issues"
   },
-  "homepage": "https://github.com/shogo82148/actions-mutex#readme",
+  "homepage": "https://github.com/EliahKagan/actions-mutex#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
