@@ -19,7 +19,7 @@ inputs:
     default: 'actions-mutex-lock/'
 
 runs:
-  using: "node18"
+  using: "node16"
   main: "lib/index.js"
   post: "lib/cleanup.js"
   post-if: "always()"
