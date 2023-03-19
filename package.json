@@ -1,6 +1,6 @@
 {
   "name": "actions-mutex",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "A GitHub Action for exclusive control",
   "main": "index.js",
   "scripts": {
