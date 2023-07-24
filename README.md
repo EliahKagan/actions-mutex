@@ -37,8 +37,8 @@ An alternative GitHub action you should consider is
 As of this writing, that action uses a Docker container, so it would require
 modification to work on macOS or Windows runners. Many workflows use only
 `runs-on: ubuntu-latest`, which of course it supports. If that's all you need,
-you prefer it; even in alpha, it is more mature and widely tested than this
-fork.
+you should prefer it; even in alpha, it is more mature and widely tested than
+this fork.
 
 ## How to use this fork
 
