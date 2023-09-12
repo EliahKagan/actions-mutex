@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+set -eux
+
+current=$(cd "$(dirname "$0")" && pwd)
+version=$1
+major=$(echo "$version" | cut -d. -f1)
+minor=$(echo "$version" | cut -d. -f2)
+patch=$(echo "$version" | cut -d. -f3)
+working=$current/.working
+
+# Clone.
+origin=$(git remote get-url origin)
+rm -rf "$working"
+git clone "$origin" "$working"
+cd "$working"
+
+git checkout -b "releases/v$major" "origin/releases/v$major" || git checkout -b "releases/v$major" develop
+git merge --no-ff -X theirs -m "Merge branch 'develop' into releases/v$major" develop || true
+
+# Update the version of package.json.
+git checkout develop -- package.json package-lock.json
+jq ".version=\"$major.$minor.$patch\"" <package.json >.tmp.json
+mv .tmp.json package.json
+jq ".version=\"$major.$minor.$patch\"" <package-lock.json >.tmp.json
+mv .tmp.json package-lock.json
+git add package.json package-lock.json
+git commit -m "bump up to v$major.$minor.$patch"
+
+# Build the action.
+npm ci
+npm run build
+
+# Remove development packages from node_modules.
+npm prune --production
+perl -ne 'print unless m(^/node_modules/|/lib/$)' -i .gitignore
+
+# Publish to GitHub.
+git add .
+git commit -m "build v$major.$minor.$patch" || true
+git push origin "releases/v$major"
+git tag -a "v$major.$minor.$patch" -m "release v$major.$minor.$patch"
+git push origin "v$major.$minor.$patch"
+git tag -fa "v$major" -m "release v$major.$minor.$patch"
+git push -f origin "v$major"
+
+cd "$current"
+rm -rf "$working"
